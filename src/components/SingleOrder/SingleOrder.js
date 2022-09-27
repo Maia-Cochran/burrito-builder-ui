@@ -4,9 +4,8 @@ import './SingleOrder.css'
 const SingleOrder = ({id, name, ingredients}) => {
     return (
         <div className='single-order'>
-            {id}
-            {name}
-            {ingredients}
+            <p>Name: {name}</p>
+            <p>Ingredients: {ingredients}</p>
         </div>
     )
 }

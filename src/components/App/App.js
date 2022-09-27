@@ -8,20 +8,17 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      orders: [{
-        id: 1,
-        name: 'Pat',
-        ingredients: ['beans', 'lettuce', 'carnitas', 'queso fresco', 'jalapeno']
-      }]
+      orders: []
     }
   }
 
-  // componentDidMount() {
-  //   getOrders().then( data => {
-  //     this.setState({orders: [data]})
-  //   })
-  //     .catch(err => console.error('Error fetching:', err));
-  // }
+  componentDidMount() {
+    getOrders().then( data => {
+      console.log(data)
+      this.setState({orders: data.orders})
+    })
+      .catch(err => console.error('Error fetching:', err));
+  }
 
   render() {
     return (
