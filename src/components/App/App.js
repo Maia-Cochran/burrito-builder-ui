@@ -12,10 +12,14 @@ class App extends Component {
     }
   }
 
+  addNewOrder = (newOrder) => {
+    this.setState({orders: [...this.state.orders, newOrder]})
+  }
+
   componentDidMount() {
     getOrders().then( data => {
       console.log(data)
-      this.setState({orders: data.orders})
+      this.setState({orders: [...data.orders]})
     })
       .catch(err => console.error('Error fetching:', err));
   }
@@ -25,7 +29,7 @@ class App extends Component {
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-          <OrderForm />
+          <OrderForm addOrder={this.addNewOrder}/>
         </header>
 
         <Orders orders={this.state.orders}/>
