@@ -15,7 +15,7 @@ const Orders = ({orders}) => {
     })
     return(
       <div className='order-list'>
-      {orderEls}
+      { orderEls.length ? orderEls : <p>No orders yet!</p> }
       </div>
     )
 }
