@@ -24,6 +24,17 @@ class App extends Component {
     })
       .catch(err => console.error('Error fetching:', err));
   }
+  componentDidUpdate = () => {
+    getOrders().then((response) => response.json())
+    .then((data) => {
+      this.setState({orders: [...data.orders]})
+    })
+    .catch((error) => {
+      this.setState({
+        error: `Sorry, we seem to be having a ${error.message}`
+      })
+    })
+  }
 
   render() {
     return (

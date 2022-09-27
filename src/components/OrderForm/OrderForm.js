@@ -41,7 +41,7 @@ class OrderForm extends Component {
     const ingredientButtons = possibleIngredients.map(ingredient => {
       console.log('INGREDIENT', ingredient)
       return (
-        <button key={ingredient} name={ingredient} value={this.state.ingredients} onClick={e => this.handleIngredientChange(e)}>
+        <button className='ingredient-choice' key={ingredient} name={ingredient} value={this.state.ingredients} onClick={e => this.handleIngredientChange(e)}>
           {ingredient}
         </button>
       )
@@ -61,7 +61,7 @@ class OrderForm extends Component {
         
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
-        <button onClick={e => this.handleSubmit(e)}>
+        <button className='submit-button' onClick={e => this.handleSubmit(e)}>
           Submit Order
         </button>
       </form>

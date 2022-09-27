@@ -1,5 +1,5 @@
 export const getOrders = () => {
-  return fetch('http://localhost:3001/api/v1/orders')
+  return fetch('http://localhost:3001/api/v1/orders/')
   .then(response => {
     if(!response.ok){
       throw new Error('Oh noes! Try again!')
@@ -7,8 +7,6 @@ export const getOrders = () => {
       return response.json()
     }
   })
-      // .then(response => response.json())
-      // .catch(error => console.log(error))
 }
 
 export const postOrder = async (name, ingredients) => {
