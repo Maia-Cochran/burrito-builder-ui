@@ -1,5 +1,9 @@
 {
   "id": 4,
-  "name": "Maia",
-  "ingredients": "beans"
+  "name": "Randy",
+  "ingredients": [
+    "beans",
+    "guacamole",
+    "jalapenos"
+  ]
 }
