@@ -1,5 +1,3 @@
-import OrderForm from "../../src/components/OrderForm/OrderForm";
-
 describe('App', () => {
   beforeEach(() => {
     cy.intercept("GET", 'http://localhost:3001/api/v1/orders/', { fixture: "Order.json" }),
