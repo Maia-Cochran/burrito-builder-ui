@@ -15,25 +15,30 @@ class OrderForm extends Component {
   handleNameChange = e => {
     e.preventDefault();
     console.log('NAME', e.target.name)
-    this.setState({name: e.target.value})
+    this.setState({ name: e.target.value })
   }
 
-  handleIngredientChange = e =>{
+  handleIngredientChange = e => {
     e.preventDefault();
     console.log('ing value', e.target.name)
-    this.setState({ingredients: [...this.state.ingredients, [e.target.name]]})
+    this.setState({ ingredients: [...this.state.ingredients, [e.target.name]] })
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    const newSubmit = postOrder(this.state.name, this.state.ingredients);
-    this.props.addOrder(newSubmit)
+    if (this.state.name && this.state.ingredients.length) {
+      const newSubmit = postOrder(this.state.name, this.state.ingredients);
+      console.log('NEW SUBMIT', newSubmit)
+      newSubmit.then(data => {
+        this.props.addOrder(data)
+      })
+    }
     this.clearInputs();
   }
 
 
   clearInputs = () => {
-    this.setState({name: '', ingredients: []});
+    this.setState({ name: '', ingredients: [] });
   }
 
   render() {
@@ -46,7 +51,7 @@ class OrderForm extends Component {
         </button>
       )
     });
-    
+
     return (
       <form>
         <input
@@ -56,10 +61,10 @@ class OrderForm extends Component {
           value={this.state.name}
           onChange={e => this.handleNameChange(e)}
         />
-   
+
         {ingredientButtons}
-        
-        <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+
+        <p>Order: {this.state.ingredients.join(', ') || 'Nothing selected'}</p>
 
         <button className='submit-button' onClick={e => this.handleSubmit(e)}>
           Submit Order

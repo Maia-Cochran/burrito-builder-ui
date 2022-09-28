@@ -17,23 +17,12 @@ class App extends Component {
     this.setState({ orders: [...this.state.orders, newOrder] })
   }
 
-  async componentDidMount () {
-    await getOrders().then( data => {
+  componentDidMount () {
+    getOrders().then( data => {
       console.log(data)
       this.setState({orders: [...data.orders]})
     })
       .catch(err => console.error('Error fetching:', err));
-  }
-  componentDidUpdate = () => {
-    getOrders().then((response) => response.json())
-    .then((data) => {
-      this.setState({orders: [...data.orders]})
-    })
-    .catch((error) => {
-      this.setState({
-        error: `Sorry, we seem to be having a ${error.message}`
-      })
-    })
   }
 
   render() {
